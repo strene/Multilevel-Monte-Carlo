@@ -1,0 +1,64 @@
+\usepackage{tikz}
+
+\usetikzlibrary{calc, tikzmark, arrows, shapes, positioning, backgrounds}
+\tikzset{every picture/.style={remember picture}}
+
+\input{color-input}
+
+\usepackage{pgfplots}
+
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0pt}
+
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[outdir=./]{epstopdf}
+
+\usepackage{tikz}
+\usetikzlibrary{calc, tikzmark, arrows, shapes, positioning, backgrounds}
+
+% Figure styles
+\tikzstyle{fig} = [anchor = west, inner sep=0]
+\tikzstyle{label} = [anchor = north, inner sep=0]
+\tikzstyle{label2} = [draw, rectangle, rounded corners, fill=white, anchor = north west, align = center, minimum height = 1.8em]
+
+% Drawing styles
+\tikzstyle{line} = [line width = 1.5pt]
+\tikzstyle{sline} = [line width = 0.2pt]
+\tikzstyle{dline} = [line width = 0.1pt, dashed]
+\tikzstyle{zline} = [line width = 0.5pt, dashed]
+\tikzstyle{tline} = [line width = 2pt]
+
+% Box styles
+\tikzstyle{explain} = [rectangle, draw = black, fill=black!10, rounded corners, font = \small, thick, text centered, minimum height = 1.7em]
+\tikzstyle{block} = [rectangle, draw = black, fill=black!10, rounded corners, font = \small\bfseries, thick, text centered, minimum height = 1.7em, anchor = north, line width = 0.5pt]
+\tikzstyle{eblock} = [rectangle, draw = black, rounded corners, font = \small, thick, text centered, minimum height = 1.7em, anchor = center, align = left, inner sep = 1em]
+\tikzstyle{rblock} = [rectangle, draw = black, fill=matlab-red!80, rounded corners, font = \small, thick, text centered, minimum height = 1.7em, anchor = north]
+\tikzstyle{wblock} = [rectangle, draw = white, fill=white, font = \small\bfseries, thick, text centered, minimum height = 1.7em, anchor = west]
+\tikzstyle{topic-gray} = [rectangle, draw=black!10, fill=black!10, font = \small, thick, text centered, minimum height = 1.7em, anchor = west, align = left]
+\tikzstyle{topic-red} = [rectangle, draw=matlab-red!80, fill=matlab-red!80, font = \small, thick, text centered, minimum height = 1.7em, anchor = west, align = left]
+\tikzstyle{presentation-block} = [rectangle, draw=black, fill=sintef-blue!30, font = \small, thick, text centered, minimum height = 1.7em, anchor = west, align = left, rounded corners, align = center]
+% \tikzstyle{eblock2} = [rectangle, draw = black, fill=matlab-red!80, rounded corners, font = \small, thick, text centered, minimum height = 1.7em, anchor = north]
+
+
+\tikzstyle{decision} = [diamond, aspect = 2, draw=black, fill=matlab-blue!20, text centered, minimum height = 1.7em, align = left]
+
+
+%\tikzstyle{process} = [rectangle, draw=black, fill=matlab-blue!70, font = \normalfont, line width = 1, text centered, minimum height = 1.7em, anchor = west]
+
+% \tikzstyle{eblock2} = [rectangle, draw = black, fill=matlab-red!80, rounded corners, font = \small, thick, text centered, minimum height = 1.7em, anchor = north]
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{most}
+% Main box style
+\newtcolorbox{mainblock}[3]{colback=white, colframe=black, fonttitle=\bfseries\centering, title=#1, height=#3, top = 0.5em, bottom = 0.5em, before skip = \boxskip, after skip = \boxskip, fontupper=\color{black}, width = #2, left = 0.1em}%
+
+\newtcolorbox{solver}[3]{colback=bl!20, colframe=black, top = 0.5em, bottom = 0.0em, before skip = 0em, after skip= 0em, colback = matlab-blue!20, colbacklower = matlab-blue!20, width = #1, height = #2, title = #3, fonttitle=\bfseries\centering, rightrule = 0.5pt, leftrule = 0.5pt, toprule = 0.5pt, bottomrule = 0.5pt, titlerule = 0.5pt, colbacktitle=matlab-blue!80}%
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+
+
+
+% \newlength{\figwidth}
+% \setlength{\figwidth}{160mm}

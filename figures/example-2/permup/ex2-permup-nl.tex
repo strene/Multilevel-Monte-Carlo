@@ -1,0 +1,67 @@
+\documentclass{beamer}
+
+\usepackage{xcolor}
+\input{tikz-input.tex}
+\setlength{\fboxsep}{0pt}
+
+\usepackage{bm}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\vel}{\vec v}
+\newcommand{\permup}{K}
+\newcommand{\vx}{\vect x}
+\newcommand{\spa}{D}
+\newcommand{\bhp}{p_{\mathsf{bh}}}
+\newcommand{\dd}{\mathsf{d}}
+
+\newcommand{\nsamp}{N}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \newlength{\figwidth}
+    \setlength{\figwidth}{0.3\textwidth}
+    \newlength{\figsep}
+    \setlength{\figsep}{0.1\figwidth}
+
+    % Figures
+    \node[fig, inner sep = 0em] (p1) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-1.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p2) at ($({p1.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-2.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p3) at ($({p2.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-3.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p4) at ($({p3.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-4.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p5) at ($({p4.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-5.png}}};
+    
+    % Labels
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p1.center) {$\nsamp_5 = 12$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p2.center) {$\nsamp_4 = 32$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p3.center) {$\nsamp_3 = 74$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p4.center) {$\nsamp_2 = 102$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p5.center) {$\nsamp_5 = 722$};
+    
+\end{tikzpicture}
+
+\end{document}
+
+% nsamples =
+
+%     12
+%     32
+%     74
+%   102
+%   722
+
+% nsamples =
+
+%      3
+%      7
+%     15
+%     24
+%   132
+
+% c =
+
+%     9.2925
+%     4.6800
+%     2.9892
+%     2.6971
+%     1.4028

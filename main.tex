@@ -1,0 +1,51 @@
+\documentclass[aspectratio=169]{beamer}
+\input{presentation-input.tex}
+
+\newcommand{\un}{u}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\expecta}{E}
+\newcommand{\var}{\mathbb{V}}
+\newcommand{\vara}{V}
+\newcommand{\nsamp}{N}
+\newcommand{\nlev}{L}
+\newcommand{\cost}{C}
+
+\newcommand{\Oh}{\mathcal{O}}
+\newcommand{\err}{\mathcal{E}}
+\newcommand{\tol}{\varepsilon}
+
+\newcommand{\mc}{{\mathsf{MC}}}
+\newcommand{\ml}{{\mathsf{ML}}}
+
+\usepackage{bm}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\vel}{\vec v}
+\newcommand{\perm}{K}
+\newcommand{\vx}{\vect x}
+\newcommand{\spa}{D}
+\newcommand{\bhp}{p_{\mathsf{bh}}}
+\newcommand{\dd}{\mathsf{d}}
+
+\newlength{\cw}
+\setlength{\cw}{0.5\textwidth}
+
+
+\title{Presentation Template}
+\author{Øystein Klemetsdal}
+\date{November 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\input{parts/pt1-intro}
+\section{Monte Carlo Methods}
+\input{parts/pt2-monte-carlo}
+\input{parts/pt3-multilevel-monte-carlo}
+\section{Reservoir Simulation}
+\input{parts/pt4-reservoir-simulation}
+\input{parts/pt5-example-1}
+\input{parts/pt6-example-2}
+
+\end{document}

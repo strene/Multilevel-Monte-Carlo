@@ -1,0 +1,53 @@
+\documentclass{beamer}
+
+\usepackage{xcolor}
+\input{tikz-input.tex}
+\setlength{\fboxsep}{0pt}
+
+\usepackage{bm}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\vel}{\vec v}
+\newcommand{\permup}{K}
+\newcommand{\vx}{\vect x}
+\newcommand{\spa}{D}
+\newcommand{\bhp}{p_{\mathsf{bh}}}
+\newcommand{\dd}{\mathsf{d}}
+
+\newcommand{\nsamp}{N}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \newlength{\figwidth}
+    \setlength{\figwidth}{0.3\textwidth}
+    \newlength{\figsep}
+    \setlength{\figsep}{0.1\figwidth}
+
+    % Figures
+    \node[fig, inner sep = 0em] (p1) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-1.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p2) at ($({p1.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-2.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p3) at ($({p2.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-3.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p4) at ($({p3.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-4.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p5) at ($({p4.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/example-2/permup/permup-5.png}}};
+    
+\end{tikzpicture}
+
+\end{document}
+
+% nsamples =
+
+%      3
+%      6
+%     14
+%     24
+%   198
+
+
+% c =
+
+%     9.2327
+%     4.5050
+%     3.0733
+%     2.8226
+%     1.6266

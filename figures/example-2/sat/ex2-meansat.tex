@@ -1,0 +1,43 @@
+\documentclass{beamer}
+
+\usepackage{xcolor}
+\input{tikz-input.tex}
+\setlength{\fboxsep}{0pt}
+
+\usepackage{bm}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\vel}{\vec v}
+\newcommand{\perm}{K}
+\newcommand{\vx}{\vect x}
+\newcommand{\spa}{D}
+\newcommand{\bhp}{p_{\mathsf{bh}}}
+\newcommand{\dd}{\mathsf{d}}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \newlength{\figwidth}
+    \setlength{\figwidth}{0.3\textwidth}
+    \newlength{\figsep}
+    \setlength{\figsep}{0.1\figwidth}
+
+    % Figures
+    \node[fig, inner sep = 0em, opacity = 0.4] (p1) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-1.png}};
+    \node[fig, inner sep = 0em, anchor = west, opacity = 0.4] (p2) at ($({p1.east}) + (\figsep, 0)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-2.png}};
+    \node[fig, inner sep = 0em, anchor = west, opacity = 0.4] (p3) at ($({p2.east}) + (\figsep, 0)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-3.png}};
+    \node[fig, inner sep = 0em, anchor = west] (p4) at ($({p3.east}) + (\figsep, 0)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-mean.png}};
+    \node[fig, inner sep = 0em, anchor = south, opacity = 0.4] (p5) at ($({p3.north}) + (0, \figsep)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-5.png}};
+    \node[fig, inner sep = 0em, anchor = west, opacity = 0.4] (p6) at ($({p5.east}) + (\figsep, 0)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-6.png}};
+    
+    \node[label2, anchor = center] at ($({p1.north}) + (0.5\figsep + 0.5\figwidth, \figsep+0.5\figwidth)$) {%
+        \textbf{Covariance function}\\\\
+        $\begin{aligned}
+            C(\vx, \vx') = \sigma^2 \exp\left(-\frac{\|\vx - \vx'\|}{\lambda}\right)
+        \end{aligned}$\\
+        $\sigma^2$: covariance, $\lambda$: correlation length
+    };
+    
+\end{tikzpicture}
+
+\end{document}

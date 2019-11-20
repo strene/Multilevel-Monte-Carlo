@@ -1,0 +1,96 @@
+\begin{frame}{Multilevel Monte Carlo Method}
+    \begin{squarelist}
+        \item<1-> Premise: we can obtain less expensive approximation $\un_{\ell-1}$ of $\un_\ell$ for $\un_0, \dots, \un_\nlev = \un$
+        \item<2-> Express expected value as telescope sum (with $\un_{-1} \equiv 0$)
+            \begin{equation*}
+                \expect[\un_\nlev] = \sum_{\ell = 0}^\nlev \expect[\un_\ell - \un_{\ell-1}]
+            \end{equation*}
+        \item<3-> ... with unbiased estimator
+            \begin{equation*}
+                \expect[\un_\nlev] \approx \expecta(\un_\nlev) = \sum_{\ell = 0}^\nlev\left(\frac{1}{\nsamp_\ell}\sum_{i=1}^{\nsamp_\ell}\only<4->{\redtext}{\left(\un_\ell^{(\ell,i)} - \un_{\ell-1}^{(\ell,i)}\right)}\right)
+            \end{equation*}
+            \begin{circlelist}
+                \item<4-> Quantities $\redtext{\un_\ell^{(\ell,i)}}$ and $\redtext{\un_{\ell-1}^{(\ell,i)}}$ from the \emph{same} random sample $\redtext{i}$, \emph{different} for each $\ell$
+            \end{circlelist}
+    \end{squarelist}
+\end{frame}
+
+\begin{frame}{Two-Level Monte Carlo Method}
+    \begin{squarelist}
+        \item<1-> Total cost $\cost$ (FLOPS) and total variance $\vara$:
+        \begin{equation*}
+            \cost = \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell, \qquad \vara = \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell}
+        \end{equation*}
+        \vspace{-1.5em}
+        \begin{block}{}
+            \begin{centering}
+                \begin{tabular}{r|lcr|l}
+                    $\cost_\ell$ & Cost of computing single sample of $\un_\ell - \un_{\ell-1}$ & &
+                    $\vara_\ell$ & Variance $\var[u_\ell - \un_{\ell-1}]$
+                \end{tabular}
+            \end{centering}
+        \end{block}
+        \vspace{0.5em}
+        \item<2-> Minimize variance for fixed total cost $\cost$ (see blackboard)
+            \begin{equation*}
+                \min\, \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} \quad \text{s.t.} \quad \cost = \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \qquad \rightarrow \cost = \tol^{-2}\left(\sum_{\ell = 0}^\nlev \sqrt{\vara_\ell \cost_\ell}\right)^2, \quad \nsamp_\ell = \lambda\sqrt{\frac{\vara_\ell}{\cost_\ell}}
+            \end{equation*}
+    \end{squarelist}
+\end{frame}
+
+\begin{frame}{Multilevel Monte Carlo Methods}
+    \begin{overlayarea}{\textwidth}{\frameheight}
+        \vspace{2em}%
+        \begin{squarelist}
+            \item<1-> Generally, $\un_\ell$ is obtained by simulation, so that $\un_\nlev \neq \un$
+            \item<2-> Mean square error is now
+                \only<2-4>{%
+                    \begin{align*}
+                        \err^\ml(\un_\nlev) & = \expect\left[\left(\expecta(\un_\nlev) - \expect[\un]\right)^2\right] \\
+                        \only<3->{%
+                            & = \expect\left[\left(\expecta(\un_\nlev) \redtext{ - \expect\left[\expecta(\un_\nlev)\right] + \expect\left[\expecta(\un_\nlev)\right]} - \expect[\un]\right)^2\right] \\
+                        }
+                        \only<4->{%    
+                            & = \underbrace{\expect\left[\left(\expecta(\un_\nlev) - \expect\left[\expecta(\un_\nlev)\right]\right)^2\right]}_{\text{Sampling error}} + \underbrace{\Big(\expect\left[\expecta(\un_\nlev)\right] - \expect[\un]\Big)^2}_{\text{Approximation error}}
+                        }
+                    \end{align*}
+                }
+                \only<5>{%
+                    \begin{equation*}
+                        \err^\ml(\un_\nlev) = \underbrace{\var\left[\expecta(\un_\nlev)\right]}_{\text{Sampling error}} + \underbrace{\left(\expect\left[\expecta(\un_\nlev)\right] - \expect[\un]\right)^2}_{\text{Approximation error}}
+                    \end{equation*}
+                }
+                \only<6->{%
+                    \begin{equation*}
+                        \underbrace{\err^\ml(\un_\nlev)}_{< \tol^2} = \underbrace{\var\left[\expecta(\un_\nlev)\right]}_{< \tol^2/2} + \underbrace{\left(\expect\left[\expecta(\un_\nlev)\right] - \expect[\un]\right)^2}_{< \tol^2/2}
+                    \end{equation*}
+                }
+            \item<7-> Simplify notation: let $\expecta_\ell$ be MC estimator of $\un_\ell - \un_{\ell-1}$
+                \begin{equation*}
+                    \expecta(\un_\nlev) = \sum_{\ell = 0}^\nlev \expecta_\ell, \quad \expecta_\ell = \frac{1}{\nsamp_\ell}\sum_{i=1}^{\nsamp_\ell}\left(\un_\ell^{(\ell,i)} - \un_{\ell-1}^{(\ell,i)}\right)
+                \end{equation*}
+        \end{squarelist}
+    \end{overlayarea}
+\end{frame}
+
+\begin{frame}{Multilevel Monte Carlo Methods}
+    \begin{theorem}[]
+        If there exists independent estimators $\expecta_\ell$ based on $\nsamp_\ell$ MC samples, with expected cost $\cost_\ell$ and variance $\vara_\ell$, and $\alpha, \beta, \gamma, c_1, c_2, c_3 > 0$ such that $\alpha \geq \min(\alpha, \beta)/2$, and
+        \begin{center}
+            \begin{tabular}{rlcl}
+                1. & $|\expect[\un_\ell - \un]| \leq c_1 2^{-\alpha\ell}$ & & (Convergence of discretization) \\
+                2. & $\vara_\ell \leq c_2 2^{-\beta \ell}$ & & (Decrease in variance) \\
+                3. & $\cost_\ell \leq c_3 2^{\gamma \ell}$ & & (Increase in cost)
+            \end{tabular}
+        \end{center}
+        Then, there exists $c_4>0$ such that for $\tol < e^{-1}$, there are $\nlev$, $\nsamp_\ell$ such that $\expecta(\un_L) = \sum \expecta_\ell$ has $\err^\ml(\un_L) < \tol^2$, and
+        \begin{align*}
+            \expect[\cost] \leq
+            \begin{cases}
+                c_4 \tol^{-2} & \beta > \gamma \\
+                c_4 \tol^{-2}\log(\tol)^2 & \beta = \gamma \\
+                c_4 \tol^{-2 - (\gamma - \beta)/\alpha} & \beta = \gamma \\
+            \end{cases}
+        \end{align*}
+    \end{theorem}
+\end{frame}

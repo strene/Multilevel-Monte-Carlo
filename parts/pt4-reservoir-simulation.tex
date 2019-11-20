@@ -1,0 +1,112 @@
+\def\name{MLMC for Uncertainty Quantification in Reservoir Simulation}
+
+\begin{frame}{\name{}}
+    \setlength{\cw}{0.6\textwidth}%
+    \begin{overlayarea}{\textwidth}{\frameheight}
+        \vspace{2em}
+        \begin{columns}
+            \begin{column}{\cw}
+                \textbf{Flow in porous media}
+                \only<1>{%
+                    \begin{align*}
+                        \vel(\vx) = - \perm(\vx)\nabla p(\vx), \quad \nabla \cdot \vel(\vx) = q(\vx)
+                    \end{align*}
+                }%
+                \only<2-3>{%
+                    \begin{align*}
+                        -\nabla \cdot \left(\perm(\vx)\nabla p(\vx)\right) = q(\vx)
+                    \end{align*}
+                }%
+                \only<4>{%
+                    \begin{align*}
+                        -\nabla \cdot \left(\perm(\vx, \redtext{\omega})\nabla p(\vx, \redtext{\omega})\right) = q(\vx,\redtext{\omega})
+                    \end{align*}
+                }%
+                \begin{squarelist}
+                    \item<3-> Permeability $\perm$ is \emph{uncertain}
+                    \begin{vertlist}
+                        \item Few physical samples, uncertain seismic data
+                    \end{vertlist}
+                    \item<4-> Modelled as random field $K(\vx, \redtext{\omega})$
+                    \begin{vertlist}
+                        \item $(\vx, \redtext{\omega}) \in \spa \times \Omega$
+                    \end{vertlist}
+                \end{squarelist}
+            \end{column}
+            \begin{column}{0.95\textwidth - \cw}
+                \only<1-3>{%
+                    \includegraphics[width = \textwidth]{figures/perm/perm.pdf}
+                }%
+                \only<4>{%
+                    \includegraphics[width = \textwidth]{figures/perm/perm-samples.pdf}
+                }%
+            \end{column}
+        \end{columns}
+    \end{overlayarea}
+\end{frame}
+
+\begin{frame}{\name{}}
+    \setlength{\cw}{0.6\textwidth}%
+    \def\dx{2em}%
+    \begin{overlayarea}{\textwidth}{\frameheight}
+        \vspace{0.1em}%
+        \textbf{Two-phase flow in porous media}
+        \begin{align*}
+            \partial_t(\phi S_\alpha) + \nabla \cdot \vel_\alpha = q_\alpha, \quad  \vel_\alpha = -\lambda_\alpha\perm\nabla p, \quad \alpha = w, o
+        \end{align*}
+        \vspace{-1.7em}
+        \begin{block}{}
+            \small
+            \begin{center}
+                $\phi$: porosity \hspace{\dx} $S_\alpha$: saturation \hspace{\dx} $\vel_\alpha$: Darcy velocity \hspace{\dx} $q_\alpha$: sources/sinks \hspace{\dx} $\lambda_\alpha$: mobility
+            \end{center}
+        \end{block}
+        \vspace{0.3em}
+        \begin{squarelist}
+            \item<2-> Quantity of interest $\un$ typically derived from simulation results\only<2>{, e.g.}
+            \only<2>{%
+                \begin{center}
+                    \small%
+                    \begin{tabular}{l|l}
+                        Saturation at time $t'$ & $\un = S_w(\vx, t')$ \\
+                        Injector bottom-hole pressure & $\un = \bhp(t)$\\
+                        Total oil production rate & $\un = Q_o$
+                    \end{tabular}
+                \end{center}
+            }%
+            \only<3->{\\... which are all random variables}
+        \end{squarelist}
+        \only<3->{
+            \begin{figure}
+                \centering
+                \includegraphics[width = \textwidth]{figures/perm/perm-samples-row.pdf}
+            \end{figure}
+        }
+    \end{overlayarea}
+\end{frame}
+
+\begin{frame}{\name{}}
+    \begin{overlayarea}{\textwidth}{\frameheight}
+        \vspace{1em}
+        \begin{squarelist}
+            \item<1-> Quantity of interest $\un$ generally defined over domain $\Lambda$
+            \begin{center}
+                \small%
+                \begin{tabular}{l|l|l}
+                    Saturation at time $t'$ & $\un = S_w(\vx, t')$ & $\Lambda = D$ (physical domain)\\
+                    Injector bottom-hole pressure & $\un = \bhp(t)$ & $\Lambda = [0,T]$ (time domain) \\
+                    Total oil production rate & $\un = Q_o$ & $\Lambda$ not applicable
+                \end{tabular}
+            \end{center}
+            \vspace{0.5em}
+            \item<2-> Necessary substitutions with appropriate norm \redtext{$\|\cdot\|$}
+            \begin{equation*}
+                |\expect[\un_\ell] - \expect[\un]| \rightarrow \redtext{\|}\expect[\un_\ell] - \expect[\un]\redtext{\|}, \quad \var[\expecta_\ell] \rightarrow \expect\left[\redtext{\|}\expecta_\ell - \expect[\expecta_\ell]\redtext{\|}^2\right]
+            \end{equation*}
+            \item<3-> With \redtext{$L^2(\Lambda)$-norm} we still have
+            \begin{equation*}
+                \var\left[\expecta[\un_\nlev]\right] = \sum_{\ell = 1}^\nlev \frac{\vara_\ell}{\nsamp_\ell}, \quad \text{similar to scalar case: } \vara_\ell = \expect\left[\redtext{\|}\expecta_\ell - \expect[\expecta_\ell]\redtext{\|}^2\right]
+            \end{equation*}
+        \end{squarelist}
+    \end{overlayarea}
+\end{frame}

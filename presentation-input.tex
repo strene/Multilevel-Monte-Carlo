@@ -1,0 +1,148 @@
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{tikz}
+
+\makeatletter
+\@newctr{footnote}[page]
+\makeatother
+
+\usepackage{adjustbox}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usepackage[tikz]{mdframed}
+\usepackage{calc}
+\usepackage{appendixnumberbeamer}
+
+% \usepackage[perpage]{footmisc}
+\renewcommand\thempfootnote{\arabic{mpfootnote}}
+
+\pdfpageattr{/Group <</S /Transparency /I true /CS /DeviceRGB>>}
+
+\input{color-input.tex}
+
+\mdfsetup{
+  tikzsetting = {fill = ye!10},
+  linecolor = black,
+  roundcorner=4pt,
+  linewidth=1.5pt,
+  userdefinedwidth=0.5\linewidth,
+}
+
+\newlength{\frameheight}
+\setlength{\frameheight}{0.9\textheight}
+
+\mode<presentation>
+{
+
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=black!80!gray}
+\setbeamercolor*{palette primary}{fg=white,bg=sintef-blue}
+
+\setbeamercolor{titlelike}{parent=palette primary,fg=white}
+\setbeamercolor{frametitle}{bg=sintef-blue}
+\setbeamercolor{frametitle right}{bg=gray!60!white}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\useinnertheme[shadow=false]{rounded}
+
+\setbeamercolor*{block title}{bg = sintef-blue, fg = white}
+\setbeamercolor*{block body}{bg = sintef-blue!20, fg = black}
+
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{block title}{size={},series=\bfseries}
+\def\Tiny{\fontsize{5pt}{5pt}\selectfont}
+\setbeamertemplate{enumerate items}[default]
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,calc,tikzmark,arrows,decorations.pathreplacing}
+\captionsetup[subfigure]{labelformat=empty}
+\captionsetup[figure]{labelformat=empty}
+
+\usepackage[absolute,overlay]{textpos}
+
+\definecolor{bl}{rgb}{0     , 0.4470, 0.7410}
+\definecolor{re}{rgb}{0.8500, 0.3250, 0.0980}
+\definecolor{ye}{rgb}{0.9290, 0.6940, 0.1250}
+\definecolor{alertclr}{rgb}{0.8500, 0.3250, 0.0980}
+
+\newcommand{\redtext}[1]{\textcolor{matlab-red}{#1}}
+\newcommand{\bluetext}[1]{\textcolor{matlab-blue}{#1}}
+
+\tikzstyle{explain} = [rectangle, draw = black, fill=ye!10, rounded corners, font = \small, thick, text centered, minimum height = 1.7em, align = left]
+\tikzstyle{pointer} = [<-, line width = 1pt]
+
+\usepackage{enumitem}
+\newenvironment{squarelist}
+{
+    \begin{enumerate}
+    [
+    label={\raisebox{.15ex}{\protect\textcolor{sintef-blue}{\tiny$\blacksquare$}{\protect}}},
+    labelindent = 0.3em,
+    leftmargin = *,
+    align = left
+    ] 
+}
+{
+  \end{enumerate}
+}
+
+\newenvironment{circlelist}
+{
+    \begin{enumerate}
+    [
+    label={\raisebox{.15ex}{\protect\textcolor{sintef-gray}{$\bullet$}{\protect}}},
+    labelindent = 0.3em,
+    leftmargin = *,
+    align = left
+    ] 
+}
+{
+  \end{enumerate}
+}
+
+\newenvironment{numlist}
+{
+  \begin{enumerate}
+    [
+    label=\protect\textcolor{sintef-gray}{\arabic*.},
+    labelindent = 0.3em,
+    leftmargin = *,
+    align = left
+    ] 
+}
+{
+  \end{enumerate}
+}
+
+\newenvironment{vertlist}
+{
+  \begin{enumerate}
+    [
+    label=\protect\textcolor{sintef-gray}{$\lvert$},
+    labelindent = 0.3em,
+    leftmargin = *,
+    align = left
+    ] 
+}
+{
+  \end{enumerate}
+}
+
+\newcommand{\mycite}[1]{\footnote{#1}}
+
+\usepackage{listofitems}
+\newcommand{\myfootcite}[1]{%
+    \footnote{%
+        \foreach \k in {#1}{
+            \citeauthor{\k}, \citeyear{\k}.
+        }
+    }%
+}
+
+\usepackage[ruled]{algorithm2e}

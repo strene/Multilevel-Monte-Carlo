@@ -1,0 +1,39 @@
+\documentclass{beamer}
+
+\usepackage{xcolor}
+\input{tikz-input.tex}
+\setlength{\fboxsep}{0pt}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \newlength{\figwidth}
+    \setlength{\figwidth}{0.2\textwidth}
+    \newlength{\figsep}
+    \setlength{\figsep}{0.1\figwidth}
+
+    % Figures
+    \node[fig, inner sep = 0em] (p1) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-1.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p2) at ($({p1.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-2.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p3) at ($({p2.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-3.png}}};
+    \node[fig, inner sep = 0em, anchor = north] (p4) at ($({p1.south}) + (0, -\figsep)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-4.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p5) at ($({p4.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-5.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p6) at ($({p5.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-6.png}}};
+    \node[fig, inner sep = 0em, anchor = north] (p7) at ($({p4.south}) + (0, -\figsep)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-7.png}}};
+    \node[fig, inner sep = 0em, anchor = west] (p8) at ($({p7.east}) + (\figsep, 0)$) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-8.png}}};
+    \node[fig, inner sep = 0em, anchor = center] (dots) at ($({p8.east}) + (\figsep + 0.5\figwidth, 0)$) {$\cdots$};
+    
+    % Labels
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p1.center) {$K_1$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p2.center) {$K_2$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p3.center) {$K_3$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p4.center) {$K_4$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p5.center) {$K_5$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p6.center) {$K_6$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p7.center) {$K_7$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p8.center) {$K_8$};
+    
+\end{tikzpicture}
+
+\end{document}

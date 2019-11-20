@@ -1,0 +1,50 @@
+\documentclass{beamer}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\input{tikz-input.tex}
+
+\newcommand{\vara}{V}
+\newcommand{\nsamp}{N}
+\newcommand{\nlev}{L}
+\newcommand{\cost}{C}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \newlength{\figwidth}
+    \setlength{\figwidth}{0.45\textwidth}
+    \newlength{\figsep}
+    \setlength{\figsep}{0.1\figwidth}
+
+    % Figures
+    \node[fig, inner sep = 0em] (p1) {\includegraphics[height = \figwidth]{./level-var.eps}};
+    \node[fig, inner sep = 0em, anchor = west] (p2) at ($({p1.east}) + (\figsep, 0)$) {\includegraphics[height = \figwidth]{./level-cost.eps}};
+    \node[fig, inner sep = 0em, anchor = west] (p3) at ($({p2.east}) + (\figsep, 0)$) {\includegraphics[height = \figwidth]{./level-samp.eps}};
+    
+    % Labels
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = north east] at ($({p1.north east}) - (0.05\figwidth, 0.05\figwidth)$) {Variance $\vara_\ell$};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = north west] at ($({p2.north west}) + (0.13\figwidth, -0.05\figwidth)$) {Cost $\cost_\ell$ (seconds)};
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = north east] at ($({p3.north east}) - (0.05\figwidth, 0.05\figwidth)$) {Samples $\nsamp_\ell$};
+    
+\end{tikzpicture}
+
+\end{document}
+
+% nsamples =
+
+%      3
+%      6
+%     14
+%     24
+%   198
+
+
+% c =
+
+%     9.2327
+%     4.5050
+%     3.0733
+%     2.8226
+%     1.6266

@@ -1,0 +1,107 @@
+\def\name{Example 1: Smoothly varying permeability field}
+
+\begin{frame}{\name{}}
+    \begin{figure}
+        \centering
+        \only<1>{%
+            \includegraphics[width = \textwidth]{figures/example-1/perm/ex1-perm.pdf}
+        }%
+        \only<2>{%
+            \includegraphics[width = \textwidth]{figures/example-1/perm/ex1-perm-cb.pdf}
+        }%
+        \only<3>{%
+            \includegraphics[width = \textwidth]{figures/example-1/sat/ex1-sat.pdf}
+        }%
+        \only<4>{%
+            \includegraphics[width = \textwidth]{figures/example-1/sat/ex1-meansat.pdf}
+        }%
+    \end{figure}
+\end{frame}
+
+\begin{frame}{\name{}}
+    \begin{figure}
+        \centering
+        \textbf{Water production rate (m$^3$/day)}
+        \includegraphics[width = 0.7\textwidth]{figures/example-1/water-rate.eps}
+    \end{figure}
+    \begin{squarelist}
+        \item Monte Carlo simulation with 100 samples: Total variance $\err^\mc(q_w) = 1.1\times10^{-4}$
+    \end{squarelist}
+\end{frame}
+
+\begin{frame}{\name{}}
+    \begin{figure}
+        \centering
+        \only<1>{%
+            \includegraphics[width = \textwidth]{figures/example-1/permup/ex1-permup.pdf}
+        }%
+        \only<2>{%
+            \includegraphics[width = \textwidth]{figures/example-1/permup/ex1-permup-nl.pdf}
+        }%
+    \end{figure}
+    \begin{squarelist}
+        \item<1-> Five levels with $\sim$ $4^2$, $8^2$, $16^2$, $32^2$, $64^2$ cells + refinement around wells
+        \item<2-> Warmup: 10 samples on each level -- used to find optimal number of samples
+        \begin{equation*}
+            \min\, \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} \quad \text{s.t.} \quad \cost = \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \qquad \rightarrow \cost = \tol^{-2}\left(\sum_{\ell = 0}^\nlev \sqrt{\vara_\ell \cost_\ell}\right)^2, \quad \nsamp_\ell = \lambda\sqrt{\frac{\vara_\ell}{\cost_\ell}}
+\end{equation*}
+    \end{squarelist}
+\end{frame}
+
+\begin{frame}{\name{}}
+    \begin{figure}
+        \centering
+        \textbf{Water production rate (m$^3$/day)}
+        \includegraphics[width = 0.7\textwidth]{figures/example-1/water-rate-ml.eps}
+    \end{figure}
+    \begin{squarelist}
+        \item Multilevel Monte Carlo simulation: Total variance $\err^\ml(q_w) = 2.4\times10^{-4}$
+    \end{squarelist}
+\end{frame}
+
+\begin{frame}{\name{}}
+    \begin{figure}
+        \centering
+        \includegraphics[width = \textwidth]{figures/example-1/statistics/ex1-statistics.pdf}
+    \end{figure}
+    \begin{squarelist}
+        \item<1-> Total cost of Multilevel Monte Carlo: $\sum_\ell \nsamp_\ell \cost_\ell \approx 488$ s
+        \item<2-> Total cost of Monte Carlo (assuming $\cost_\nlev = $ cost of $\un_4 -\un_3$ $\approx$ cost of $\un_4$) $\approx 923$ s
+    \end{squarelist}
+\end{frame}
+
+% nsamples =
+
+%      3
+%      6
+%     14
+%     24
+%   198
+
+
+% c =
+
+%     9.2327
+%     4.5050
+%     3.0733
+%     2.8226
+%     1.6266
+
+
+%% run 2
+
+% nsamples =
+
+%      3
+%      7
+%     15
+%     24
+%   132
+
+% c =
+
+%     9.2925
+%     4.6800
+%     2.9892
+%     2.6971
+%     1.4028

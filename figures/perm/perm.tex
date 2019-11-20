@@ -1,0 +1,21 @@
+\documentclass{beamer}
+
+\usepackage{xcolor}
+\input{tikz-input.tex}
+\setlength{\fboxsep}{0pt}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \newlength{\figwidth}
+    \setlength{\figwidth}{0.3\textwidth}
+
+    % Figures
+    \node[fig, inner sep = 0em] (p) {\fbox{\includegraphics[width = \figwidth]{figures/perm/perm-1.png}}};
+    % Labels
+    \node[label2, inner sep = 0.5em, opacity = 0.8, anchor = center] at (p.center) {$K$};
+	
+\end{tikzpicture}
+
+\end{document}
