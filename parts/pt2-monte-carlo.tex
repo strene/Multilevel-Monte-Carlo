@@ -1,24 +1,29 @@
-\begin{frame}{Monte Carlo Method}
+\def\name{Monte Carlo Method}
+
+\begin{frame}{\name{}}
     \begin{overlayarea}{\textwidth}{\frameheight}
+        \vspace{1em}
         \begin{squarelist}
             \item<1-> Let $\un$ be random variable with expected value $\expect[\un]$ and variance $\var[\un]$
             \item<2-> Approximate $\expect[\un]$ from independent, identically distributed samples $\un^1, \dots, \un^\nsamp$ 
+                \begin{align*}
+                    \expect[\un] \approx \expecta(\un) = \frac{1}{\nsamp}\sum_{i = 1}^\nsamp \un^i,
+                    \visible<3->{\quad \var\big[\expecta(\un)\big] = \expect\left[\left(\expecta(\un) - \expect\left[\expecta(u)\right]\right)^2\right] =  \frac{1}{\nsamp}\var[\un]}
+                \end{align*}
+            \item<4-> \textbf{Upsides:} Easy to implement and easy to parallelize\\
+            \item<5-> \textbf{Downside:} Root mean square error (RMSE) of the estimator is
                 \begin{equation*}
-                    \expect[\un] \approx \expecta(\un) = \frac{1}{\nsamp}\sum_{i = 1}^\nsamp \un^i, \quad \text{variance:} \quad \var\big[\expecta(\un)\big] = \frac{1}{\nsamp}\var[\un]
+                    \err^\mc(u) = \sqrt{\var\big[\expecta(\un)\big]} = \Oh(N^{-1/2})
                 \end{equation*}
-            \item<3-> Mean square error (MSE)
-                \begin{equation*}
-                    \err^\mc(u) = \var\big[\expecta(\un)\big] = \Oh(N^{-1})
-                \end{equation*}
-                \only<4->{$\rightarrow$ Accuracy $\err^\mc < \tol^2$ requires $N = \Oh(\tol^{-2})$ samples!}
+                $\rightarrow$ Accuracy $\err^\mc < \tol$ requires $N = \Oh(\tol^{-2})$ samples!
         \end{squarelist}
     \end{overlayarea}
 \end{frame}
 
-\begin{frame}{Two-Level Monte Carlo Method}
+\begin{frame}{Two-Level \name{}}
     \begin{squarelist}
         \item<1-> Premise: we can obtain inexpensive approximation $\un_0$ of $\un_1 = \un$
-        \item<2-> Express expected value as telescope sum
+        \item<2-> Express expected value as
             \begin{equation*}
                 \expect[\un_1] = \expect[\un_0] + \expect[\un_1 - \un_0]
             \end{equation*}
@@ -27,14 +32,14 @@
                 \expect[\un_1] \approx \expecta(\un_1) = \frac{1}{\nsamp_0}\sum_{i=1}^{\nsamp_0}\un_0^i + \frac{1}{\nsamp_1}\sum_{i=1}^{\nsamp_1}\only<4->{\redtext}{(\un_1^i - \un_0^i)}
             \end{equation*}
             \begin{circlelist}
-                \item<4-> Quantities $\redtext{\un_1^i}$ and $\redtext{\un_0^i}$ from the \emph{same} random sample $\redtext{i}$
+                \item<4-> Quantities $\redtext{\un_1^i}$ and $\redtext{\un_0^i}$ come from the \emph{same} random sample $\redtext{i}$
             \end{circlelist}
     \end{squarelist}
 \end{frame}
 
-\begin{frame}{Two-Level Monte Carlo Method}
+\begin{frame}{Two-Level \name{}}
     \begin{squarelist}
-        \item<1-> Total cost $\cost$ (FLOPS) and total variance $\vara$:
+        \item<1-> Total cost $\cost$ (e.g., CPU time) and total variance $\vara$:
         \begin{equation*}
             \cost = \nsamp_0\cost_0 + \nsamp_1\cost_1, \qquad \vara = \frac{\vara_0}{\nsamp_0} + \frac{\vara_1}{\nsamp_1}
         \end{equation*}
@@ -50,9 +55,9 @@
             \end{centering}
         \end{block}
         \vspace{0.5em}
-        \item<2-> Minimize variance for fixed total cost $\cost$ (see blackboard)
+        \item<2-> Minimize total cost $\cost$ for a fixed variance $\tol^2$ (see blackboard)
             \begin{equation*}
-                \min\, \frac{\vara_0}{\nsamp_0} + \frac{\vara_1}{\nsamp_1} \quad \text{s.t.} \quad \cost = \nsamp_0\cost_0 + \nsamp_1\cost_1 \qquad \rightarrow \frac{\nsamp_1}{\nsamp_0} = \sqrt{\frac{\vara_1/\cost_1}{\vara_0/\cost_0}}
+                \min\, \nsamp_0\cost_0 + \nsamp_1\cost_1 \quad \text{s.t.} \quad \frac{\vara_0}{\nsamp_0} + \frac{\vara_1}{\nsamp_1} = \tol^2 \qquad \visible<3->{\rightarrow \nsamp_\ell = \tol^{-2}\left(\sqrt{\vara_0 \cost_0} + \sqrt{\vara_1 \cost_1}\right)\sqrt{\frac{\vara_\ell}{\cost_\ell}}}
             \end{equation*}
     \end{squarelist}
 \end{frame}

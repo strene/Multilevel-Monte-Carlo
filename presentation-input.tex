@@ -2,6 +2,11 @@
 \usepackage{amsmath}
 \usepackage{tikz}
 
+\usepackage[ruled]{algorithm2e}
+
+\usepackage[]{natbib}
+\bibliographystyle{abbrvnat}
+
 \makeatletter
 \@newctr{footnote}[page]
 \makeatother
@@ -61,7 +66,7 @@
 \setbeamertemplate{enumerate items}[default]
 
 \usetikzlibrary{arrows,shapes,positioning,shadows,calc,tikzmark,arrows,decorations.pathreplacing}
-\captionsetup[subfigure]{labelformat=empty}
+% \captionsetup[subfigure]{labelformat=empty}
 \captionsetup[figure]{labelformat=empty}
 
 \usepackage[absolute,overlay]{textpos}
@@ -72,6 +77,7 @@
 \definecolor{alertclr}{rgb}{0.8500, 0.3250, 0.0980}
 
 \newcommand{\redtext}[1]{\textcolor{matlab-red}{#1}}
+\newcommand{\graytext}[1]{\textcolor{black!20}{#1}}
 \newcommand{\bluetext}[1]{\textcolor{matlab-blue}{#1}}
 
 \tikzstyle{explain} = [rectangle, draw = black, fill=ye!10, rounded corners, font = \small, thick, text centered, minimum height = 1.7em, align = left]
@@ -144,5 +150,3 @@
         }
     }%
 }
-
-\usepackage[ruled]{algorithm2e}

@@ -30,12 +30,13 @@
     \node[fig, inner sep = 0em, anchor = south] (p5) at ($({p3.north}) + (0, \figsep)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-5.png}};
     \node[fig, inner sep = 0em, anchor = west] (p6) at ($({p5.east}) + (\figsep, 0)$) {\includegraphics[width = \figwidth]{figures/example-2/sat/sat-6.png}};
     
-    \node[label2, anchor = center] at ($({p1.north}) + (0.5\figsep + 0.5\figwidth, \figsep+0.5\figwidth)$) {%
+    \node[label2, anchor = center, minimum width = 2\figwidth] at ($({p1.north}) + (0.5\figsep + 0.5\figwidth, \figsep+0.5\figwidth)$) {%
         \textbf{Covariance function}\\\\
         $\begin{aligned}
             C(\vx, \vx') = \sigma^2 \exp\left(-\frac{\|\vx - \vx'\|}{\lambda}\right)
-        \end{aligned}$\\
-        $\sigma^2$: covariance, $\lambda$: correlation length
+        \end{aligned}$\\\\
+        covariance $\sigma^2 = 1$ \\
+        correlation length $\lambda = 0.3$
     };
     
 \end{tikzpicture}

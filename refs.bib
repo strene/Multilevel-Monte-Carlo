@@ -1,0 +1,86 @@
+@article{Muller2013,
+abstract = {Monte Carlo (MC) is a well known method for quantifying uncertainty arising for example in subsurface flow problems. Although robust and easy to implement, MC suffers from slow convergence. Extending MC by means of multigrid techniques yields the multilevel Monte Carlo (MLMC) method. MLMC has proven to greatly accelerate MC for several applications including stochastic ordinary differential equations in finance, elliptic stochastic partial differential equations and also hyperbolic problems. In this study, MLMC is combined with a streamline-based solver to assess uncertain two phase flow and Buckley-Leverett transport in random heterogeneous porous media. The performance of MLMC is compared to MC for a two dimensional reservoir with a multi-point Gaussian logarithmic permeability field. The influence of the variance and the correlation length of the logarithmic permeability on the MLMC performance is studied.},
+author = {M{\"{u}}ller, Florian and Jenny, Patrick and Meyer, Daniel W.},
+doi = {10.1016/j.jcp.2013.03.023},
+file = {:home/strene/Documents/phd/literature/papers/ml-monte-carlo/1-s2.0-S0021999113002015-main.pdf:pdf},
+issn = {10902716},
+journal = {J. Comput. Phys.},
+keywords = {Multilevel Monte Carlo,Random heterogeneous porous media,Streamline solver,Two phase flow,Two phase transport},
+pages = {685--702},
+title = {{Multilevel Monte Carlo for two phase flow and Buckley-Leverett transport in random heterogeneous porous media}},
+volume = {250},
+year = {2013}
+}
+
+@article{Efendiev2013,
+abstract = {In this paper, we propose multilevel Monte Carlo (MLMC) methods that use ensemble level mixed multiscale methods in the simulations of multiphase flow and transport. The contribution of this paper is twofold: (1) a design of ensemble level mixed multiscale finite element methods and (2) a novel use of mixed multiscale finite element methods within multilevel Monte Carlo techniques to speed up the computations. The main idea of ensemble level multiscale methods is to construct local multiscale basis functions that can be used for any member of the ensemble. In this paper, we consider two ensemble level mixed multiscale finite element methods: (1) the no-local-solve-online ensemble level method (NLSO); and (2) the local-solve-online ensemble level method (LSO). The first approach was proposed in Aarnes and Efendiev (SIAM J. Sci. Comput. 30(5):2319-2339, 2008) while the second approach is new. Both mixed multiscale methods use a number of snapshots of the permeability media in generating multiscale basis functions. As a result, in the off-line stage, we construct multiple basis functions for each coarse region where basis functions correspond to different realizations. In the no-local-solve-online ensemble level method, one uses the whole set of precomputed basis functions to approximate the solution for an arbitrary realization. In the local-solve-online ensemble level method, one uses the precomputed functions to construct a multiscale basis for a particular realization. With this basis, the solution corresponding to this particular realization is approximated in LSO mixed multiscale finite element method (MsFEM). In both approaches, the accuracy of the method is related to the number of snapshots computed based on different realizations that one uses to precompute a multiscale basis. In this paper, ensemble level multiscale methods are used in multilevel Monte Carlo methods (Giles 2008a, Oper.Res. 56(3):607-617, b). In multilevel Monte Carlo methods, more accurate (and expensive) forward simulations are run with fewer samples, while less accurate (and inexpensive) forward simulations are run with a larger number of samples. Selecting the number of expensive and inexpensive simulations based on the number of coarse degrees of freedom, one can show that MLMC methods can provide better accuracy at the same cost as Monte Carlo (MC) methods. The main objective of the paper is twofold. First, we would like to compare NLSO and LSO mixed MsFEMs. Further, we use both approaches in the context of MLMC to speedup MC calculations. {\textcopyright} 2013 Springer Science+Business Media Dordrecht.},
+author = {Efendiev, Y. and Iliev, O. and Kronsbein, C.},
+doi = {10.1007/s10596-013-9358-y},
+file = {:home/strene/Documents/phd/literature/papers/ml-monte-carlo/Efendiev2013{\_}Article{\_}MultilevelMonteCarloMethodsUsi.pdf:pdf},
+issn = {14200597},
+journal = {Comput. Geosci.},
+keywords = {Multilevel Monte Carlo,Multiscale methods,Porous media,Stochastic partial differential equations,Two-phase flow},
+number = {5},
+pages = {833--850},
+title = {{Multilevel Monte Carlo methods using ensemble level mixed MsFEM for two-phase flow and transport simulations}},
+volume = {17},
+year = {2013}
+}
+
+@article{Muller2014,
+abstract = {We consider two phase flow and transport in heterogeneous porous media with uncertain permeability distribution. The resulting transport uncertainty is assessed by means of multilevel Monte Carlo (MLMC). In contrast to the Monte Carlo (MC) method, which operates on one specific numerical grid with one numerical solver, MLMC samples from a hierarchy of grids or numerical solvers. In this work, the MLMC performance resulting from a hierarchy consisting of a finite volume transport solver and a streamline-based solver is compared to a purely grid-based hierarchy. Unlike the established grid-based MLMC method, our solver-based MLMC method operates on the same numerical grid and therefore avoids difficulties related to the upscaling of permeability fields or boundary conditions on coarser grids. For a two dimensional test case with log-normal permeability distribution, both MLMC approaches are compared to a MC reference run. At equivalent accuracy, significant speedups of MLMC with respect to MC are achieved. {\textcopyright} 2014 Elsevier Inc.},
+author = {M{\"{u}}ller, Florian and Meyer, Daniel W. and Jenny, Patrick},
+doi = {10.1016/j.jcp.2014.02.047},
+file = {:home/strene/Documents/phd/literature/papers/ml-monte-carlo/1-s2.0-S0021999114001776-main.pdf:pdf},
+issn = {10902716},
+journal = {J. Comput. Phys.},
+keywords = {Finite volume solver,Multilevel Monte Carlo,Random heterogeneous porous media,Streamline solver,Two phase transport},
+pages = {39--50},
+publisher = {Elsevier Inc.},
+title = {{Solver-based vs. grid-based multilevel Monte Carlo for two phase flow and transport in random heterogeneous porous media}},
+url = {http://dx.doi.org/10.1016/j.jcp.2014.02.047},
+volume = {268},
+year = {2014}
+}
+
+@article{Cliffe2011,
+abstract = {We consider the numerical solution of elliptic partial differential equations with random coefficients. Such problems arise, for example, in uncertainty quantification for groundwater flow. We describe a novel variance reduction technique for the standard Monte Carlo method, called the multilevel Monte Carlo method, and demonstrate numerically its superiority. The asymptotic cost of solving the stochastic problem with the multilevel method is always significantly lower than that of the standard method and grows only proportionally to the cost of solving the deterministic problem in certain circumstances. Numerical calculations demonstrating the effectiveness of the method for one- and two-dimensional model problems arising in groundwater flow are presented. {\textcopyright} 2011 Springer-Verlag.},
+author = {Cliffe, K. A. and Giles, M. B. and Scheichl, R. and Teckentrup, A. L.},
+doi = {10.1007/s00791-011-0160-x},
+file = {:home/strene/Documents/phd/literature/papers/ml-monte-carlo/Cliffe2011{\_}Article{\_}MultilevelMonteCarloMethodsAnd.pdf:pdf},
+issn = {14329360},
+journal = {Comput. Vis. Sci.},
+keywords = {Monte Carlo,Multilevel,Stochastic PDE},
+number = {1},
+pages = {3--15},
+title = {{Multilevel Monte Carlo methods and applications to elliptic PDEs with random coefficients}},
+volume = {14},
+year = {2011}
+}
+
+@article{Giles2015,
+author = {Giles, M. B.},
+doi = {10.1017/S096249291500001X},
+file = {:home/strene/Documents/phd/literature/papers/multilevel{\_}monte{\_}carlo{\_}methods.pdf:pdf},
+journal = {Acta Numer.},
+pages = {259--328},
+title = {{Multilevel monte carlo methods}},
+year = {2015}
+}
+
+@article{Teckentrup2013,
+abstract = {We consider the application of multilevel Monte Carlo methods to elliptic PDEs with random coefficients. We focus on models of the random coefficient that lack uniform ellipticity and boundedness with respect to the random parameter, and that only have limited spatial regularity. We extend the finite element error analysis for this type of equation, carried out in Charrier et al. (SIAM J Numer Anal, 2013), to more difficult problems, posed on non-smooth domains and with discontinuities in the coefficient. For this wider class of model problem, we prove convergence of the multilevel Monte Carlo algorithm for estimating any bounded, linear functional and any continuously Fr{\'{e}}chet differentiable non-linear functional of the solution. We further improve the performance of the multilevel estimator by introducing level dependent truncations of the Karhunen-Lo{\`{e}}ve expansion of the random coefficient. Numerical results complete the paper. {\textcopyright} 2013 Springer-Verlag Berlin Heidelberg.},
+archivePrefix = {arXiv},
+arxivId = {1204.3476},
+author = {Teckentrup, A. L. and Scheichl, R. and Giles, M. B. and Ullmann, E.},
+doi = {10.1007/s00211-013-0546-4},
+eprint = {1204.3476},
+file = {:home/strene/Documents/phd/literature/papers/ml-monte-carlo/Teckentrup2013{\_}Article{\_}FurtherAnalysisOfMultilevelMon.pdf:pdf},
+issn = {0029599X},
+journal = {Numer. Math.},
+number = {3},
+pages = {569--600},
+title = {{Further analysis of multilevel Monte Carlo methods for elliptic PDEs with random coefficients}},
+volume = {125},
+year = {2013}
+}

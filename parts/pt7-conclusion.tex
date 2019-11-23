@@ -1,0 +1,71 @@
+\def\name{Concluding Remarks}
+
+\begin{frame}{\name{}}
+
+    \textbf{A few pitfalls and shortcomings}\vskip2mm
+    \begin{squarelist}
+        \item<2-> Convergence theory with conditions in terms of unknown quantities
+        \begin{circlelist}
+            \item Number of samples needed to approximate $\vara_\ell$, $\cost_\ell$ is problem-dependent
+        \end{circlelist}
+        \item<3-> Use upscaling with care
+        \begin{circlelist}
+            \item Coarsest level $\ell = 0$ should have cell diameter $h \sim$ correlation length $\lambda$
+        \end{circlelist}
+        \item<4-> Very challenging to upscale complex models in a meaningful way
+        \begin{circlelist}
+            \item Channelized reservoirs, facies with different rock types, multiphase, etc. \\
+            ... and the best methods are expensive
+        \end{circlelist}
+        \item<5-> Not all choices of $\un$ are appropriate!
+        \begin{circlelist}
+            % \only<3-5>{%
+            %     \item<4-5> Example: saturation at specific point and time
+            %     \item<5-5> Example: binary output $\un \in \{0,1\}$ (e.g., fracture propagation)
+            %     \begin{equation*}
+            %         \un_\ell - \un_{\ell-1} = 
+            %         \begin{cases}
+            %             1 & \text{probability $p$} \\
+            %             -1 & \text{probability $q$} \\
+            %             0 & \text{probability $1-(p+q)$}
+            %         \end{cases}
+            %         \quad p,q \ll 1 \rightarrow \expect[\un_\ell - \un_{\ell-1}] \approx 0
+            %     \end{equation*}
+            % }%
+            \item Rule of thumb: average of $\un$ should ''make sense'' for the problem at hand
+        \end{circlelist}
+    \end{squarelist}
+    
+\end{frame}
+
+\begin{frame}{\name{}}
+
+    \textbf{Can we do better?}\vskip2mm
+    \begin{squarelist}
+        \item<2-> \emph{Level} does not necessarily mean spatial resolution!
+        \begin{circlelist}
+            \item<3-> Solver-based: use a more accurate solver for higher levels\\
+            e.g., increasing accuracy of spatial/temporal discretization with level
+            \item<4-> Multiscale methods (compromise between upscaling and solver accuracy)
+        \end{circlelist}
+        \item<5-> MLMC does not require a geometric sequence of levels 
+        \begin{circlelist}
+            \item Sufficient that accuracy and cost \emph{increase} and variance \emph{decrease} with $\ell$
+        \end{circlelist}
+        \item<6-> Multi-index Monte Carlo -- change multiple aspects of simulation with
+        level
+        \begin{circlelist}
+            \item Example: resolution in space \emph{and} time, $\ell \rightarrow \vect \ell = (\ell_{\vx}, \ell_t)$
+        \end{circlelist}
+        % \item<7-> Richardson extrapolation -- more accurate estimates of $\un_\ell - \un_{\ell-1}$
+    \end{squarelist}
+    
+\end{frame}
+
+\def\name{Suggested Literature}
+
+\begin{frame}{\name{}}
+	\begin{scriptsize}
+    	\bibliography{refs}
+	\end{scriptsize}
+\end{frame}
