@@ -123,7 +123,7 @@
                 \For(\tcp*[f]{Warmup}){$\ell = 0, \dots, \nlev$}{
                     Compute $\nsamp_w$ samples of $\un_\ell - \un_{\ell-1}$\tcp*[r]{Local MC}
                 }
-                Estimate $\vara_\ell$, $\cost_\ell$ and optimal $\nsamp_w = \nsamp_\ell + \nsamp_\ell'$ given desired tolerance $\tol$\\
+                Estimate $\vara_\ell$, $\cost_\ell$ and optimal $\nsamp_\ell = \nsamp_w + \nsamp_\ell'$ given desired tolerance $\tol$\\
             }%
             \only<2>{\graytext}{%
                 \While(\tcp*[f]{Multilevel MC}){any extra samples needed, ($\nsamp_\ell' > 0$)}{

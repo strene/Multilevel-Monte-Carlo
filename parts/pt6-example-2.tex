@@ -44,7 +44,7 @@
         \item<2-> Warmup: Run 10 samples on each level to estimate $\vara_\ell$ and $\cost_\ell$ \\
         $\rightarrow$ used to find optimal $\nsamp_\ell$ for tolerance $\tol = \err^{\mc}$
          \begin{equation*}
-            \min\, \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \quad \text{s.t.} \quad \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} = \tol^2 \quad \rightarrow \quad \nsamp_\ell = \tol^{-2}\left(\sum_{\ell = 0}^\nlev \sqrt{\vara_\ell \cost_\ell}\right)\sqrt{\frac{\vara_\ell}{\cost_\ell}}
+            \min\, \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \quad \text{s.t.} \quad \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} = \tol^2 \quad \rightarrow \quad \nsamp_\ell = \tol^{-2}\left(\sum_{k = 0}^\nlev \sqrt{\vara_k \cost_k}\right)\sqrt{\frac{\vara_\ell}{\cost_\ell}}
         \end{equation*}
     \end{squarelist}
 \end{frame}

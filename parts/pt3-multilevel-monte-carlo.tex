@@ -35,7 +35,7 @@
         \vspace{0.5em}
         \item<2-> Minimize total cost $\cost$ for a fixed variance $\tol^2$
             \begin{equation*}
-                \min\, \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \quad \text{s.t.} \quad \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} = \tol^2 \quad \rightarrow \quad \nsamp_\ell = \tol^{-2}\left(\sum_{\ell = 0}^\nlev \sqrt{\vara_\ell \cost_\ell}\right)\sqrt{\frac{\vara_\ell}{\cost_\ell}}
+                \min\, \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \quad \text{s.t.} \quad \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} = \tol^2 \quad \rightarrow \quad \nsamp_\ell = \tol^{-2}\left(\sum_{k = 0}^\nlev \sqrt{\vara_k \cost_k}\right)\sqrt{\frac{\vara_\ell}{\cost_\ell}}
             \end{equation*}
     \end{squarelist}
 \end{frame}
@@ -44,7 +44,7 @@
     \begin{overlayarea}{\textwidth}{\frameheight}
         \vspace{2em}%
         \begin{squarelist}
-            \item<1-> Generally, $\un_\ell$ is obtained by simulation, so that $\un_\nlev \neq \un$
+            \item<1-> Generally, $\un_\ell$ is obtained by simulation, so that $\un_\nlev$ is approximation of $\un$
             \item<2-> Mean square error is now
                 \only<2-4>{%
                     \begin{align*}
@@ -62,11 +62,6 @@
                         \err^\ml(\un_\nlev)^2 = \underbrace{\var\left[\expecta(\un_\nlev)\right]}_{\text{Sampling error}} + \underbrace{\left(\expect\left[\expecta(\un_\nlev)\right] - \expect[\un]\right)^2}_{\text{Approximation error}}
                     \end{equation*}
                 }
-                % \only<6->{%
-                %     \begin{equation*}
-                %         \underbrace{\err^\ml(\un_\nlev)}_{< \tol^2} = \underbrace{\var\left[\expecta(\un_\nlev)\right]}_{< \tol^2/2} + \underbrace{\left(\expect\left[\expecta(\un_\nlev)\right] - \expect[\un]\right)^2}_{< \tol^2/2}
-                %     \end{equation*}
-                % }
             \item<6-> Sampling error $< \tol^2/2$ and approximation error $< \tol^2/2$ ensures $\err^\ml(\un_\nlev) < \tol$
             \item<7-> Simplify notation: let $\expecta_\ell$ be MC estimator of $\un_\ell - \un_{\ell-1}$
                 \begin{equation*}

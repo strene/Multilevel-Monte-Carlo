@@ -1,9 +1,22 @@
-\begin{frame}
-    \vspace{1em}
-    \begin{block}{}
-        \small
-        Developed by nuclear physicist Stanislaw Ulam during the Manhattan Project in the late 1940's\vskip5mm
-        {\itshape It was at that time that I suggested an obvious name for the statistical method -- a suggestion not unrelated to the fact that Stan had an uncle who would borrow money from relatives because he "just had to go to Monte Carlo"}\vskip5mm
-        \hspace*\fill{\small--- Nicholas Metropolis, {\itshape The Beginning of the Monte Carlo Method} (1987)}
-    \end{block}
+\def\name{Introdution}
+\begin{frame}{\name{}}
+    \begin{squarelist}
+        \item<1-> Many problems are in principle deterministic, but we don't know the parameters
+        \begin{circlelist}
+            \item From computational finance to plasma physics
+            \item ... and \redtext{reservoir simulation}, where subsurface properties are uncertain
+        \end{circlelist}
+        \item<2-> Need a method to \emph{quantify uncertainty}
+        \begin{circlelist}
+            \item Method of moments, collocation methods, stochastic Galerkin
+            \item Uncertainty with dimension and highly nonlinear effect $\rightarrow$ Monte Carlo methods
+        \end{circlelist}
+        
+        % \item<2-> Generally 
+        % \begin{circlelist}
+            
+        %     \item Computational finance (e.g., options pricing)
+        %     \item Engineering: weather forecasting, particle physics, \redtext{reservoir simulation}
+        % \end{circlelist}
+    \end{squarelist}
 \end{frame}
