@@ -44,15 +44,15 @@
     \begin{squarelist}
         \item<2-> \emph{Level} does not necessarily mean spatial resolution!
         \begin{circlelist}
-            \item<3-> Solver-based: use a more accurate solver for higher levels\\
+            \item Solver-based: use a more accurate solver for higher levels\\
             e.g., increasing accuracy of spatial/temporal discretization with level
-            \item<4-> Multiscale methods (compromise between upscaling and solver accuracy)
+            \item Multiscale methods (compromise between upscaling and solver accuracy)
         \end{circlelist}
-        \item<5-> MLMC does not require a geometric sequence of levels 
+        \item<3-> MLMC does not require a geometric sequence of levels 
         \begin{circlelist}
             \item Sufficient that accuracy and cost \emph{increase} and variance \emph{decrease} with $\ell$
         \end{circlelist}
-        \item<6-> Multi-index Monte Carlo -- change multiple aspects of simulation with
+        \item<4-> Multi-index Monte Carlo -- change multiple aspects of simulation with
         level
         \begin{circlelist}
             \item Example: resolution in space \emph{and} time, $\ell \rightarrow \vect \ell = (\ell_{\vx}, \ell_t)$

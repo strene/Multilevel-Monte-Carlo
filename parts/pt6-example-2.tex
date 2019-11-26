@@ -42,7 +42,7 @@
     \begin{squarelist}
         \item<1-> Five levels with $\sim$ $4^2$, $8^2$, $16^2$, $32^2$, $64^2$ cells + refinement around wells
         \item<2-> Warmup: Run 10 samples on each level to estimate $\vara_\ell$ and $\cost_\ell$ \\
-        $\rightarrow$ used to find optimal $\nsamp_\ell$ for tolerance $\tol = \err^{\mc}$
+        $\rightarrow$ used to find optimal $\nsamp_\ell$ for tolerance $\tol \approx \err^{\mc}$
          \begin{equation*}
             \min\, \sum_{\ell = 0}^\nlev \nsamp_\ell \cost_\ell \quad \text{s.t.} \quad \sum_{\ell = 0}^\nlev\frac{\vara_\ell}{\nsamp_\ell} = \tol^2 \quad \rightarrow \quad \nsamp_\ell = \tol^{-2}\left(\sum_{k = 0}^\nlev \sqrt{\vara_k \cost_k}\right)\sqrt{\frac{\vara_\ell}{\cost_\ell}}
         \end{equation*}
